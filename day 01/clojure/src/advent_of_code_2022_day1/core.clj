@@ -2,7 +2,7 @@
 (require '[clojure.string :as str])
 
 (defn getTopX
-  "Get the sum of the top x elves."
+  "Gets the sum of the top x elves. Intentionally without using a sort algorithm!"
   ([totals x] (getTopX (map-indexed (fn [i x] {:id i :value x}) totals) x 0))
   ([totals x i] (if (= x i)
                   0
