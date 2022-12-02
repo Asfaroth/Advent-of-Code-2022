@@ -1,4 +1,4 @@
-(ns advent-of-code-2022-day1.core)
+(ns advent-of-code-2022-day01.core)
 (require '[clojure.string :as str])
 
 (defn getTopX
