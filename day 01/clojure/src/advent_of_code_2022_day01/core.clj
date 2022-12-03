@@ -13,6 +13,6 @@
 (defn -main
   "Main function."
   []
-  (let [totals (map (fn [x] (reduce + (map #(Integer/parseInt %) (str/split x #"\n")))) (str/split (slurp "../input.txt") #"\n\n"))]
+  (let [totals (map (fn [x] (reduce + (map #(Integer/parseInt %) (str/split-lines x)))) (str/split (slurp "../input.txt") #"\n\n"))]
     (println "Top Elf: " (apply max totals))
     (println "Top 3:   " (getTopX totals 3))))

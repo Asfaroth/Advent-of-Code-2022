@@ -38,7 +38,7 @@
   []
   (let [parsedLines (map #(let [parsed (str/split % #" ")]
                             {:played (str/replace (get parsed 0) #"\p{C}" "") :willPlay (str/replace (get parsed 1) #"\p{C}" "")})
-                         (str/split (slurp "../input.txt") #"\n"))
+                         (str/split-lines (slurp "../input.txt")))
         firstRounds (map (fn [x] {:played (if (= (:played x) playedRock) rock
                                               (if (= (:played x) playedPaper) paper scissor))
                                   :willPlay (if (= (:willPlay x) willPlayRockOrLoose) rock
