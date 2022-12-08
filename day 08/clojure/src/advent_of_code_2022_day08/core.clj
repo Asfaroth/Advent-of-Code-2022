@@ -2,7 +2,7 @@
 (require '[clojure.string :as str])
 
 (defn treeInVisible?
-  ""
+  "Checks whether a tree is invisible for a given line of sight."
   [line height]
   (if (empty? line)
     false
@@ -11,7 +11,7 @@
       (recur (drop 1 line) height))))
 
 (defn getScencicScoreLine
-  ""
+  "Calculates the scenic score for a given line of sight."
   ([line height] (getScencicScoreLine line height 1))
   ([line height value]
    ;;(println line height value)
