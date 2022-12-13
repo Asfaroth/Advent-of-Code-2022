@@ -35,10 +35,10 @@
   "Main function."
   []
   (let [input  (mapv #(mapv json/read-str (str/split-lines %)) (str/split (slurp "../input.txt") #"\n\n"))
-        ;;rightOrder? (mapv #(packetsRightOrder? (first %) (second %) false) input)
+        rightOrder? (mapv #(packetsRightOrder? (first %) (second %) false) input)
         firstDivider [[2]]
         secondDivider [[6]]
         input2 (conj (conj (reduce #(into %1 %2) [] input) firstDivider) secondDivider)
         sortedInput (reduce #(sortPacket %1 %2) [] input2)]
-    ;;(println "Sum of wrong ordered indexes: " (reduce-kv #(if %3 (+ (inc %2) %1) %1) 0 rightOrder?))
-    (println (reduce-kv #(if (or (= %3 firstDivider) (= %3 secondDivider)) (* %1 (inc %2)) %1) 1 sortedInput))))
+    (println "Sum of wrong ordered indexes: " (reduce-kv #(if %3 (+ (inc %2) %1) %1) 0 rightOrder?))
+    (println "Product of divider indexes:   " (reduce-kv #(if (or (= %3 firstDivider) (= %3 secondDivider)) (* %1 (inc %2)) %1) 1 sortedInput))))
