@@ -2,7 +2,7 @@
 (require '[clojure.string :as str])
 
 (defn canMoveUp?
-  ""
+  "Checks whether the elves can go to the desired field with the given rule that they only can go one field up."
   [matrix current desired]
   (and (< -1 (:row desired) (count matrix))
        (< -1 (:col desired) (count (first matrix)))
@@ -13,7 +13,7 @@
               (inc (:d (nth (nth matrix (:row current)) (:col current))))))))
 
 (defn canMoveDown?
-  ""
+  "Checks whether the elves can go to the desired field with the given rule that they only can go fields down."
   [matrix current desired]
   (and (< -1 (:row desired) (count matrix))
        (< -1 (:col desired) (count (first matrix)))
@@ -24,7 +24,7 @@
               (inc (:d (nth (nth matrix (:row current)) (:col current))))))))
 
 (defn dijkstraUp
-  ""
+  "Simulates the Dijkstra algorithm for the first ruleset."
   ([matrix start stop] (dijkstraUp matrix (vector start) stop 0))
   ([matrix path stop distance]
    (let [currentPos (last path)
@@ -52,7 +52,7 @@
            upMatrix))))))
 
 (defn dijkstraDown
-  ""
+  "Simulates the Dijkstra algorithm for the second ruleset."
   ([matrix start] (dijkstraDown matrix (vector start) 0))
   ([matrix path distance]
    (let [currentPos (last path)
